@@ -32,10 +32,10 @@ jobs:
         run: |
           mkdir -p _site
           # Copy common static site assets into the deployment directory if they exist
-          [ -f index.html ] && cp index.html _site/
-          [ -f style.css ] && cp style.css _site/
-          [ -f script.js ] && cp script.js _site/
-          [ -d assets ] && cp -R assets _site/
+          [ -f index.html ] && cp index.html _site/ || true
+          [ -f style.css ] && cp style.css _site/ || true
+          [ -f script.js ] && cp script.js _site/ || true
+          [ -d assets ] && cp -R assets _site/ || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
