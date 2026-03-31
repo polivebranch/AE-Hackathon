@@ -131,12 +131,28 @@ function renderBoard() {
       el.className = 'cell';
       el.dataset.r = r;
       el.dataset.c = c;
+      // Accessibility: expose cells as interactive, focusable controls
+      el.setAttribute('role', 'button');
+      el.tabIndex = 0;
+      el.setAttribute('aria-label', 'Minesweeper cell');
 
       el.addEventListener('click',       onLeftClick);
       el.addEventListener('contextmenu', onRightClick);
       el.addEventListener('mousedown',   onMiddleDown);
       el.addEventListener('dblclick',    onDoubleClick);
 
+      // Keyboard support: Enter/Space to reveal, "F" to toggle flag
+      el.addEventListener('keydown', e => {
+        const key = e.key;
+        if (key === 'Enter' || key === ' ') {
+          e.preventDefault();
+          // Trigger existing click handler for reveal
+          el.click();
+        } else if (key === 'f' || key === 'F') {
+          e.preventDefault();
+          cycleFlag(cell);
+        }
+      });
       // Touch support – long press = flag
       let touchTimer = null;
       el.addEventListener('touchstart', e => {
