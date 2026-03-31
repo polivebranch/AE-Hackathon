@@ -56,7 +56,9 @@ function showOverlay(title, body) {
 
 /* ── Utility ──────────────────────────────────────────────────── */
 function pad(n, len = 3) {
-  return Math.min(Math.abs(n), 999).toString().padStart(len, '0');
+  const absClamped = Math.min(Math.abs(n), 999);
+  const base = absClamped.toString().padStart(len, '0');
+  return n < 0 ? '-' + base : base;
 }
 
 function neighbours(r, c) {
