@@ -12,6 +12,9 @@ const DIFFICULTIES = {
   expert:       { rows: 16, cols: 30, mines: 99 },
 };
 
+/* ── Layout constant (must match .cell width/height in style.css) */
+const CELL_SIZE = 32; // px
+
 /* ── State ────────────────────────────────────────────────────── */
 let rows, cols, totalMines;
 let board      = [];   // 2-D array of cell objects
@@ -122,7 +125,7 @@ function initGame() {
 /* ── Render ───────────────────────────────────────────────────── */
 function renderBoard() {
   boardEl.innerHTML = '';
-  boardEl.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+  boardEl.style.gridTemplateColumns = `repeat(${cols}, ${CELL_SIZE}px)`;
 
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
@@ -170,10 +173,11 @@ function renderBoard() {
     }
   }
 
-  // Adjust panel width to match board
+  // Match panel width to board-container's total width:
+  // board-container adds 4px padding + 4px border on each side = 16px total
   const panelEl = document.querySelector('.panel');
   if (panelEl) {
-    panelEl.style.width = boardEl.offsetWidth + 'px';
+    panelEl.style.width = (cols * CELL_SIZE + 16) + 'px';
     panelEl.style.maxWidth = '100%';
   }
 }
