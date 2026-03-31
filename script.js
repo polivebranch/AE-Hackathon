@@ -30,7 +30,7 @@ const mineCounterEl = document.getElementById('mine-counter');
 const timerEl       = document.getElementById('timer');
 const faceBtn       = document.getElementById('face-btn');
 const diffSelect    = document.getElementById('difficulty');
-const newGameBtn    = document.getElementById('new-game-btn');
+
 
 /* ── Overlay (win / lose) ─────────────────────────────────────── */
 const overlay = (() => {
@@ -384,7 +384,6 @@ function onDoubleClick(e) {
 
 /* ── Toolbar buttons ──────────────────────────────────────────── */
 faceBtn.addEventListener('click', initGame);
-newGameBtn.addEventListener('click', initGame);
 diffSelect.addEventListener('change', initGame);
 
 /* ── Bootstrap ────────────────────────────────────────────────── */
