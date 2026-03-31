@@ -194,8 +194,10 @@ function placeMines(safeR, safeC) {
 
 /* ── Reveal logic ─────────────────────────────────────────────── */
 function revealCell(cell) {
-  if (cell.revealed || cell.flagged || cell.question) return;
+  if (cell.revealed || cell.flagged) return;
 
+  // Clear question marker (if any) when revealing
+  if (cell.question) cell.question = false;
   cell.revealed = true;
   updateCellEl(cell);
 
