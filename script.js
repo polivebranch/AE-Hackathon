@@ -334,7 +334,7 @@ function onLeftClick(e) {
 function onRightClick(e) {
   e.preventDefault();
   const cell = getCellFromEvent(e);
-  if (gameState === 'idle') return;
+  if (gameState === 'won' || gameState === 'lost') return;
   cycleFlag(cell);
 }
 
