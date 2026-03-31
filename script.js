@@ -321,6 +321,12 @@ function endGame(won, explodedCell = null) {
         cell.el.classList.add('cell', 'revealed', 'mine-revealed');
       }
       if (cell.flagged && !cell.mine) {
+        // Clear flag/question state so only the wrong-flag indicator is shown
+        cell.flagged = false;
+        if (cell.question) {
+          cell.question = false;
+        }
+        cell.el.classList.remove('flagged', 'question');
         cell.el.classList.add('wrong-flag');
         cell.el.textContent = '❌';
       }
