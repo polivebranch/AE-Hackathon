@@ -45,16 +45,6 @@ h1 {
   cursor: pointer;
 }
 
-#new-game-btn {
-  padding: 4px 12px;
-  border: 2px outset #fff;
-  background: #d4d0c8;
-  font-size: 0.9rem;
-  cursor: pointer;
-  font-weight: bold;
-}
-#new-game-btn:active { border-style: inset; }
-
 /* ── Info Panel ──────────────────────────────────────────────── */
 .panel {
   display: flex;
